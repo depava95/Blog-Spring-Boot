@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 @Data
 @Entity
 @Table(name = "comments")
-public class Comments {
+public class Comment {
     @Id
     @Column(name = "id")
     private Long id;

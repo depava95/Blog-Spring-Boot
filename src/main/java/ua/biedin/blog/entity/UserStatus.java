@@ -1,5 +1,5 @@
 package ua.biedin.blog.entity;
 
-public enum  Status {
-    APPROVED, NOTAPPROVED
+public enum UserStatus {
+    RESERVE, APPROVED, NOTAPPROVED
 }
