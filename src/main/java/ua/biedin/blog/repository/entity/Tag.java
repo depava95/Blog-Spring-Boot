@@ -1,11 +1,9 @@
-package ua.biedin.blog.entity;
+package ua.biedin.blog.repository.entity;
 
 import lombok.Data;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Data
 @Entity

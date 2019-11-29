@@ -1,6 +1,5 @@
-package ua.biedin.blog.entity;
+package ua.biedin.blog.repository.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Type;

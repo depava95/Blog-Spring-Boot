@@ -5,36 +5,52 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ua.biedin.blog.entity.User;
-import ua.biedin.blog.service.UserService;
+import ua.biedin.blog.controller.request.LoginRequest;
+import ua.biedin.blog.controller.response.LoginResponse;
+import ua.biedin.blog.repository.entity.User;
+import ua.biedin.blog.service.impl.LoginServiceImpl;
+import ua.biedin.blog.service.impl.UserServiceImpl;
 
-import java.net.http.HttpResponse;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/v1/user")
 public class UserController {
 
-    private final UserService userService;
+    private final UserServiceImpl userServiceImpl;
+    private final LoginServiceImpl loginServiceImpl;
 
     @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public UserController(UserServiceImpl userServiceImpl, LoginServiceImpl loginServiceImpl) {
+        this.userServiceImpl = userServiceImpl;
+        this.loginServiceImpl = loginServiceImpl;
     }
 
-    @GetMapping("api/v1/user")
+    @GetMapping
     public List<User> getAllUsers() {
-        return userService.getAllUsers();
+        return userServiceImpl.getAllUsers();
     }
 
-    @GetMapping("api/v1/user/{id}")
+    @GetMapping("{id}")
     public User getUserById(@PathVariable Long id) {
-       return userService.getUserById(id);
+        return userServiceImpl.getUserById(id);
     }
 
-    @PostMapping("api/v1/user")
-    public ResponseEntity addUser (@RequestBody User user) {
-        userService.saveUser(user);
+    @PostMapping
+    public ResponseEntity addUser(@RequestBody User user) {
+        userServiceImpl.saveUser(user);
         return new ResponseEntity("User added!", HttpStatus.ACCEPTED);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity login(@Valid @RequestBody LoginRequest loginRequest) {
+        boolean isLogin = loginServiceImpl.login(loginRequest.getLogin(), loginRequest.getPassword());
+        if (isLogin) {
+            return new ResponseEntity<>(new LoginResponse(true, "Login success"), HttpStatus.BAD_REQUEST);
+        } else {
+            return new ResponseEntity<>(new LoginResponse(false, "Incorrect password"), HttpStatus.BAD_REQUEST);
+        }
     }
 
 }

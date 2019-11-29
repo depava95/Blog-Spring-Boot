@@ -1,4 +1,4 @@
-package ua.biedin.blog.entity;
+package ua.biedin.blog.repository.entity;
 
 import lombok.Data;
 import org.hibernate.annotations.Type;
