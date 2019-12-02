@@ -4,11 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.biedin.blog.repository.entity.Tag;
 import ua.biedin.blog.repository.TagRepository;
+import ua.biedin.blog.service.interfaces.TagService;
 
 import java.util.List;
 
 @Service
-public class TagServiceImpl {
+public class TagServiceImpl implements TagService {
 
     private final TagRepository tagRepository;
 

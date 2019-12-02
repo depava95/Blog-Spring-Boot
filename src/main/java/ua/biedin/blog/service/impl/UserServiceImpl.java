@@ -2,13 +2,14 @@ package ua.biedin.blog.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.biedin.blog.repository.entity.User;
 import ua.biedin.blog.repository.UserRepository;
+import ua.biedin.blog.repository.entity.User;
+import ua.biedin.blog.service.interfaces.UserService;
 
 import java.util.List;
 
 @Service
-public class UserServiceImpl {
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 

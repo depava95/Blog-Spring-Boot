@@ -14,6 +14,9 @@ configurations {
     }
 }
 
+compileJava.options.encoding("utf-8")
+compileTestJava.options.encoding("utf-8")
+
 repositories {
     mavenCentral()
 }
@@ -28,9 +31,7 @@ dependencies {
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5:2.10.1'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-    }
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
 }
 
 test {

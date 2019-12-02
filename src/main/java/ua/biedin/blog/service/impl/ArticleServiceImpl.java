@@ -4,11 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.biedin.blog.repository.entity.Article;
 import ua.biedin.blog.repository.ArticleRepository;
+import ua.biedin.blog.service.interfaces.ArticleService;
 
 import java.util.List;
 
 @Service
-public class ArticleServiceImpl {
+public class ArticleServiceImpl implements ArticleService {
 
     private final ArticleRepository articleRepository;
 
