@@ -1,0 +1,24 @@
+#SERVER
+server:
+  port: 9090
+
+#SPRING
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/blogdb
+    username: root
+    password: 12345678
+  thymeleaf:
+    cache: false
+  output:
+    ansi:
+      enabled: always
+
+#LOGGING
+logging:
+  level:
+    sql: debug
