@@ -13,6 +13,7 @@ import ua.biedin.blog.service.impl.UserServiceImpl;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/user")
@@ -27,30 +28,48 @@ public class UserController {
         this.loginServiceImpl = loginServiceImpl;
     }
 
-    @GetMapping
+    @GetMapping(produces = "application/json")
     public List<User> getAllUsers() {
         return userServiceImpl.getAllUsers();
     }
 
-    @GetMapping("{id}")
-    public User getUserById(@PathVariable Long id) {
-        return userServiceImpl.getUserById(id);
+    @GetMapping(value = "/{id}", produces = "application/json")
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+        Optional<User> userById = userServiceImpl.getUserById(id);
+        return userById.map(user -> new ResponseEntity<>(user, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(null, HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping
-    public ResponseEntity addUser(@RequestBody User user) {
-        userServiceImpl.saveUser(user);
-        return new ResponseEntity("User added!", HttpStatus.ACCEPTED);
+    @GetMapping(value = "/{email}", produces = "application/json")
+    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+        Optional<User> optionalUser = userServiceImpl.findUserByEmail(email);
+        return optionalUser.map(user -> new ResponseEntity<>(user, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(null, HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/login")
-    public ResponseEntity login(@Valid @RequestBody LoginRequest loginRequest) {
-        boolean isLogin = loginServiceImpl.login(loginRequest.getLogin(), loginRequest.getPassword());
-        if (isLogin) {
-            return new ResponseEntity<>(new LoginResponse(true, "Login success"), HttpStatus.BAD_REQUEST);
+    @PostMapping(consumes = "application/json")
+    @ResponseStatus(HttpStatus.CREATED)
+    public User addUser(@RequestBody User user) {
+        return userServiceImpl.saveUser(user);
+    }
+
+
+    //TODO CREATE UPDATING USER
+//    @PatchMapping(path = "/{id}", consumes = "application/json")
+//    public User updateUsername(@PathVariable long Id, @RequestBody User user) {
+//        return ;
+//    }
+
+
+    @PostMapping(value = "/login", consumes = "application/json")
+    public ResponseEntity<String> login(@Valid @RequestBody LoginRequest loginRequest) {
+        LoginResponse loginResponse = loginServiceImpl.login(loginRequest.getLogin(), loginRequest.getPassword());
+        if (loginResponse.isLogin() && loginResponse.isPassword()) {
+            return new ResponseEntity<>("Success", HttpStatus.ACCEPTED);
+        } else if (loginResponse.isLogin() && !loginResponse.isPassword()) {
+            return new ResponseEntity<>("Wrong password", HttpStatus.UNAUTHORIZED);
         } else {
-            return new ResponseEntity<>(new LoginResponse(false, "Incorrect password"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("User doesn't exist", HttpStatus.NOT_FOUND);
         }
     }
-
 }

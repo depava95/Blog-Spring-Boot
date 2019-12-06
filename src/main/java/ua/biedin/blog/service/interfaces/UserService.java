@@ -4,13 +4,16 @@ package ua.biedin.blog.service.interfaces;
 import ua.biedin.blog.repository.entity.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
 
     List<User> getAllUsers();
 
-    User getUserById(Long id);
+    Optional<User> getUserById(Long id);
 
-    void saveUser(User user);
+    User saveUser(User user);
+
+    Optional<User> findUserByEmail(String email);
 
 }

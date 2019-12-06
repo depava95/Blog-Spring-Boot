@@ -4,6 +4,7 @@ server:
 
 #SPRING
 spring:
+  profiles: dev
   jpa:
     hibernate:
       ddl-auto: none
@@ -22,3 +23,38 @@ spring:
 logging:
   level:
     sql: debug
+
+#ADDITIONAL VALUES
+blog:
+  content:
+    pageSize: 10
+# @ConfigurationProperties(prefix="blog.content") // int pageSize
+
+
+
+
+
+
+---
+#IF YOU CLONE THIS APPLICATION FROM GITHUB, USE THIS PROFILE
+spring:
+  profiles: prod
+  thymeleaf:
+    cache: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+  datasource:
+      url:
+      username:
+      password:
+
+#SERVER
+server:
+    port: 8080
+
+#LOGGING
+logging:
+  level:
+    root: warn

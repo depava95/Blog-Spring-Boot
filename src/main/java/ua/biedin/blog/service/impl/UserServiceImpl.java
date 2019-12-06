@@ -7,6 +7,7 @@ import ua.biedin.blog.repository.entity.User;
 import ua.biedin.blog.service.interfaces.UserService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -22,11 +23,16 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
-    public User getUserById(Long id) {
+    public Optional<User> getUserById(Long id) {
         return userRepository.findFirstById(id);
     }
 
-    public void saveUser(User user) {
-        userRepository.save(user);
+    public User saveUser(User user) {
+        return userRepository.save(user);
+    }
+
+    @Override
+    public Optional<User> findUserByEmail(String email) {
+        return userRepository.findFirstByEmail(email);
     }
 }

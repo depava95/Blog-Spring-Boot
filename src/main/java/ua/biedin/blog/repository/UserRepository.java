@@ -4,11 +4,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import ua.biedin.blog.repository.entity.User;
 
+import java.util.Optional;
+
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    User findFirstById(Long id);
+    Optional<User> findFirstById(Long id);
 
-    User findFirstByFirstName(String name);
+    Optional<User> findFirstByFirstName(String name);
 
-    User findFirstByEmail(String email);
+    Optional<User> findFirstByEmail(String email);
+
 }

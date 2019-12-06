@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="15 seconds">
-    <property name="LOGS" value="LogFile"/>
+    <property name="LOGS" value="./logs"/>
 
     <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
@@ -11,7 +11,7 @@
     </appender>
 
     <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOGS}.log</file>
+        <file>${LOGS}/.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
         </encoder>
@@ -24,14 +24,14 @@
         </rollingPolicy>
     </appender>
 
-    <root level="info">
-        <appender-ref ref="RollingFile"/>
-        <appender-ref ref="Console"/>
-    </root>
+<!--    <root level="info">-->
+<!--        <appender-ref ref="RollingFile"/>-->
+<!--        <appender-ref ref="Console"/>-->
+<!--    </root>-->
 
-    <logger name="ua.biedin" level="trace" additivity="false">
-        <appender-ref ref="RollingFile"/>
-        <appender-ref ref="Console"/>
-    </logger>
+<!--    <logger name="ua.biedin" level="trace" additivity="false">-->
+<!--        <appender-ref ref="RollingFile"/>-->
+<!--        <appender-ref ref="Console"/>-->
+<!--    </logger>-->
 
 </configuration>

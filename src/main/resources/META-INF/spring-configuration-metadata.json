@@ -1,0 +1,11 @@
+{
+  "properties": [
+    {
+      "name": "blog.content.pageSize",
+      "type": "java.lang.Integer",
+      "description": ".Setting up a pagination size."
+    }
+
+  ]
+
+}
