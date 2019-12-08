@@ -2,8 +2,6 @@ package ua.biedin.blog.repository.entity;
 
 import lombok.Data;
 import org.hibernate.annotations.Type;
-import org.springframework.data.rest.core.annotation.RestResource;
-
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -40,6 +38,8 @@ public class Article {
     private Timestamp create;
     @Column(name = "updated_at")
     private Timestamp update;
+    @Column(name = "rating")
+    private Integer rating;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(

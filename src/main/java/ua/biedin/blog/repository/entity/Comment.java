@@ -27,4 +27,6 @@ public class Comment {
     @Column(name = "is_deleted")
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean isDeleted;
+    @Column(name = "rating")
+    private Integer rating;
 }

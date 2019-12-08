@@ -1,4 +1,4 @@
-package ua.biedin.blog.service.dto;
+package ua.biedin.blog.controller.dto;
 
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;

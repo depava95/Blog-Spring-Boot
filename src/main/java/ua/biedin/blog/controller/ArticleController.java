@@ -12,11 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ua.biedin.blog.repository.entity.Article;
-import ua.biedin.blog.service.dto.ArticleResource;
-import ua.biedin.blog.service.dto.ArticleResourceAssembler;
+import ua.biedin.blog.controller.dto.ArticleResource;
+import ua.biedin.blog.controller.dto.ArticleResourceAssembler;
 import ua.biedin.blog.service.impl.ArticleServiceImpl;
-
-import java.util.List;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;

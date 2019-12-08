@@ -9,4 +9,8 @@ public final class Constants {
 
     public static final int MIN_PASSWORD_LENGTH = 6;
 
+    public static final String DESC = "desc";
+
+    public static final String ASC = "asc";
+
 }
