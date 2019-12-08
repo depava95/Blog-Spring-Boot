@@ -1,6 +1,7 @@
 package ua.biedin.blog.repository.entity;
 
 import lombok.Data;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

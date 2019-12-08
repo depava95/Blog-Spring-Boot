@@ -1,10 +1,12 @@
 package ua.biedin.blog.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.hateoas.config.EnableHypermediaSupport;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+@EnableHypermediaSupport(type = EnableHypermediaSupport.HypermediaType.HAL)
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 

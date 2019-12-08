@@ -24,14 +24,14 @@
         </rollingPolicy>
     </appender>
 
-<!--    <root level="info">-->
-<!--        <appender-ref ref="RollingFile"/>-->
-<!--        <appender-ref ref="Console"/>-->
-<!--    </root>-->
+    <root level="info">
+        <appender-ref ref="RollingFile"/>
+        <appender-ref ref="Console"/>
+    </root>
 
-<!--    <logger name="ua.biedin" level="trace" additivity="false">-->
-<!--        <appender-ref ref="RollingFile"/>-->
-<!--        <appender-ref ref="Console"/>-->
-<!--    </logger>-->
+    <logger name="ua.biedin" level="trace" additivity="false">
+        <appender-ref ref="RollingFile"/>
+        <appender-ref ref="Console"/>
+    </logger>
 
 </configuration>

@@ -37,14 +37,14 @@ public class UserController {
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
         Optional<User> userById = userServiceImpl.getUserById(id);
         return userById.map(user -> new ResponseEntity<>(user, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(null, HttpStatus.NOT_FOUND));
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping(value = "/{email}", produces = "application/json")
     public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
         Optional<User> optionalUser = userServiceImpl.findUserByEmail(email);
         return optionalUser.map(user -> new ResponseEntity<>(user, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(null, HttpStatus.NOT_FOUND));
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping(consumes = "application/json")
