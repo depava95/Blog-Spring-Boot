@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 @Table(name = "comments")
 public class Comment {
     @Id
-    @Column(name = "id")
+    @Column(name = "id", columnDefinition = "INT(11)")
     private Long id;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "article_id", referencedColumnName = "id")

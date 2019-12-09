@@ -10,8 +10,8 @@ import java.util.List;
 
 @Service
 public interface ArticleService {
-
-    Page<Article> getAllArticlesWithPagination(Pageable pageable);
-
-    Article getArticleById(Long id);
+//
+//    Page<Article> getAllArticlesWithPagination(Pageable pageable);
+//
+//    Article getArticleById(Long id);
 }

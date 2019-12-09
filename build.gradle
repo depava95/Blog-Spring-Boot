@@ -11,7 +11,10 @@ plugins {
     id 'org.springframework.boot' version '2.2.1.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
+    id 'io.franzbecker.gradle-lombok' version '1.7'
 }
+
+
 
 group = 'ua.biedin'
 version = '0.0.1-SNAPSHOT'
@@ -23,6 +26,8 @@ configurations {
         extendsFrom annotationProcessor
     }
 }
+
+
 
 repositories {
     mavenCentral()
@@ -45,3 +50,5 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+

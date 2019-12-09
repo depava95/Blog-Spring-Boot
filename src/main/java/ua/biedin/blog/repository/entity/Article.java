@@ -14,13 +14,13 @@ import java.util.Set;
 public class Article {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", columnDefinition = "INT(11)")
     private Long id;
     @Column(name = "title")
     private String title;
     @Column(name = "description")
     private String description;
-    @Column(name = "content")
+    @Column(name = "content", columnDefinition = "LONGTEXT")
     private String content;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", referencedColumnName = "id")
@@ -38,13 +38,9 @@ public class Article {
     private Timestamp create;
     @Column(name = "updated_at")
     private Timestamp update;
-    @Column(name = "rating")
+    @Column(name = "rating", columnDefinition = "INT(11)")
     private Integer rating;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "article_tags",
-            joinColumns = {@JoinColumn(name = "article_id")},
-            inverseJoinColumns = {@JoinColumn(name = "tag_id")})
+    @ManyToMany(mappedBy = "articles")
     private Set<Tag> tags = new HashSet<>();
 }

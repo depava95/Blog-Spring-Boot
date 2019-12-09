@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Categories {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", columnDefinition = "INT(11)")
     private Long id;
     @Column(name = "name")
     private String articleName;
